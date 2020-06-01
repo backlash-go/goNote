@@ -59,4 +59,5 @@ func main() {
    //tea := teacher{"lyq",10,"math"}
 
 
+
 }

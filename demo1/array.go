@@ -4,6 +4,21 @@ import (
 	"fmt"
 )
 
+func main() {
+	array1 := [...]int{12,13,14,15}
+	array2 := array1
+
+	fmt.Printf("%v,%p\n",array1,&array1)
+	fmt.Printf("%v,%p\n",array2,&array2)
+
+	array2[1] = 1000
+	fmt.Printf("%v,%p\n",array1,&array1)
+	fmt.Printf("%v,%p\n",array2,&array2)
+
+
+
+}
+
 func main0003() {
 	//array define  默认值为数据类型的默认值
 	var a [3]int

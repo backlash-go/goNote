@@ -8,3 +8,10 @@ ee
 ee
 ee
 ee
+
+
+| **源** | **update执行次数** | **影响数据量** | **update关联表** | **insert执行次数** | **影响数据量** | **insert关联表** | **DDL执行次数** |
+| ----:| ----: | ----: | ----: | ----: | ----: | ----: | ----: |
+| python | 2 | 142 | `wehub_chatroom`<br>`ad_user_info` | 0 | 0   |    - | 5  |
+| go     | 4 |  154 | `reviewer_homework`<br>`reviewer`<br>`course_progress_0-9`<br>`reviewer_course` | 2 |  34  | `reviewer_quality_check_config`<br>`course_homework``|  2 |
+| java   | 1 |  10 | `scrm_user` | 1 |  367  |  `district_code`  |  3 |
