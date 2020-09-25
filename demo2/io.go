@@ -2,17 +2,28 @@ package main
 
 import (
 	"fmt"
-	"io"
-	"strings"
+	"io/ioutil"
 )
 
 func main() {
-	src := strings.NewReader("abcdefg")
-	dst := new(strings.Builder)
+	//src := strings.NewReader("abcdefg")
+	//dst := new(strings.Builder)
+	//
+	//written,_ := io.CopyN(dst,src,3)
+	//fmt.Println("src is :  ",  src.Len())
+	//
+	//fmt.Println("dst is : ",  dst.String())
+	//fmt.Println("dst has been written: ",written)
 
-	written,_ := io.CopyN(dst,src,3)
-	fmt.Println("src is :  ",  src.Len())
+	names, _ :=ioutil.ReadDir("./read")
+	for _, v := range names{
+		if !v.IsDir() {
+			continue
+		}
 
-	fmt.Println("dst is : ",  dst.String())
-	fmt.Println("dst has been written: ",written)
+		fmt.Printf("%v",v.Name())
+	}
+
+
+
 }

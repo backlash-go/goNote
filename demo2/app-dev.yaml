@@ -1,0 +1,37 @@
+### 开发环境配置
+env: dev
+port: 13831
+address: 0.0.0.0:13831
+database:
+  host: 127.0.0.1
+  port: 3307
+  user: root
+  password: qBs!c27Mqw
+  name: hx
+logDir: /tmp
+authRedis:
+  password: Hexian%!g5tg
+  db: 0
+  host: 172.18.214.173 #172.18.214.173:6379
+  port: 6379
+gRpcClientAddress: 192.1.66.205:5000 # python
+gRpcReviewersAddress: 127.0.0.1:11411
+ReviewClientEnv: https://apitest.hexiaoxiang.com
+dataRedis:
+  ..data: ""
+  host: 172.18.121.176
+  db: 7
+  password: Hexian%!g5tg
+  port: 6379
+esAddress: http://es-cn-v641dcsmy0011zuhe.elasticsearch.aliyuncs.com
+esuser: bizdev
+espassword: 7f94H&lhgZ8a
+esport: 9200
+
+hostSlice:
+  hostlist:
+  - 1111
+  - 2222
+  datalist:
+  - aaa
+  - bbb

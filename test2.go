@@ -8,7 +8,6 @@ import (
 
 func main() {
 
-
 	//sl1 := make([]string,1,1)
 	var sl1 []string
 
