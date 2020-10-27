@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"sync/atomic"
 	"unsafe"
 )
 
@@ -24,6 +25,16 @@ func main() {
 	var ua unsafe.Pointer
 
 	fmt.Printf("%T\n",ua)
+
+    var ad int32 = 10
+
+	//fmt.Println(atomic.AddInt32(&ad,1))
+
+
+    fmt.Println(atomic.LoadInt32(&ad))
+
+    //var a *int32
+    fmt.Println(new(*int32))
 
 
 	//fmt.Printf("%#016x\n", Float64bits(1.0)) // "0x3ff0000000000000"

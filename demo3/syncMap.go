@@ -1,4 +1,7 @@
 package main
+
+import "sync"
+
 func main() {
 	m := make(map[int]int)
 	go func() {
@@ -12,4 +15,6 @@ func main() {
 		}
 	}()
 	select {}
+
+	var a sync.Map
 }

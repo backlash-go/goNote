@@ -27,9 +27,10 @@ func person2() {
 }
 
 func main() {
+
 	go person1()
 	go person2()
 	for {
-
+;
 	}
 }
