@@ -46,9 +46,25 @@ func main() {
 		fmt.Println(v, ok)
 	}
 
-	var m2  map[int]int
-	m2[1] = 2
-	fmt.Println(m2)
+	var sll1 []string
+	if sll1 == nil {
+		fmt.Println("sll1 is nil")
+	}
+	fmt.Println(len(sll1))
 
+	sll2 := make([]string, 0)
+	if sll2 == nil {
+		fmt.Println("sll2 is nil")
+	}
+	fmt.Println(len(sll2))
 
+	ssss1 := Fc
+	ssss2 := Fc
+    fmt.Printf("%p,%p\n",ssss1,ssss1(1))
+    fmt.Printf("%p,%p\n",ssss2,ssss2(2))
+    fmt.Printf("%p,%p\n",Fc,Fc(3))
+}
+
+func Fc(x int64) int64 {
+	return 2+x
 }

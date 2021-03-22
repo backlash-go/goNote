@@ -15,3 +15,12 @@ ee
 | python | 2 | 142 | `wehub_chatroom`<br>`ad_user_info` | 0 | 0   |    - | 5  |
 | go     | 4 |  154 | `reviewer_homework`<br>`reviewer`<br>`course_progress_0-9`<br>`reviewer_course` | 2 |  34  | `reviewer_quality_check_config`<br>`course_homework``|  2 |
 | java   | 1 |  10 | `scrm_user` | 1 |  367  |  `district_code`  |  3 |
+
+
+
+
+CREATE USER bigdata_sync IDENTIFIED WITH MYSQL_NATIVE_PASSWORD BY 'b24s5i5v6g6';
+GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'bigdata_sync'@'%';
+GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO hug@'%';
+create user xxb02@'172.18.214.%' identified by 'BE!c27~cMVM8';
+grant select on hx.* to xxb02@'%';

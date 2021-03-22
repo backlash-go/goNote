@@ -13,6 +13,7 @@ func main0001() {
 	str := "a"
 
 	fmt.Printf("%T\n",ch)  //int32
+	fmt.Printf("%v\n",ch)  //int32
 	fmt.Println(ch)
 	fmt.Printf("%T\n",str) // == 'a''\0'   string  '\0'表示字符串的结束标志
 	fmt.Printf("%T\n",cha1)  //uint8
@@ -25,6 +26,12 @@ func main() {
 	fmt.Println(len(a)) //12
 
 	str1 := "你好"
+	b1 := []byte(str1)
+
+	fmt.Println("%c", b1)
+
+	fmt.Println(len(str1))
+
 	str2 := "老铁"
 	str3 := str1 + str2
 	fmt.Println(str3)  //你好老铁

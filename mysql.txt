@@ -1,0 +1,98 @@
+yum -y install mysql  安装客户端   
+
+ rpm -Uvh  http://dev.mysql.com/get/mysql57-community-release-el7-9.noarch.rpm  
+    ls /etc/yum.repos.d/
+    yum makecache
+    yum -y install mysql-community-server-5.7.24 
+    ps aux | grep mysql
+    systemctl start mysqld
+    systemctl enable mysqld
+    ps aux | grep mysql 
+    grep "password" /var/log/mysqld.log 
+   
+   mysqladmin -utofu  -p  password 'qBs!c27Mqw'
+  
+
+BE!c27~cMVM7
+
+   create database db;
+   use db;
+   show tables;
+    create user Jump@'%' identified by 'BEMVM8';
+create user grafana@'localhost' identified by 'BE!c27~cMVM8';
+
+create user xxb@'172.18.214.%' identified by 'BE!c27~cMVM8';
+grant select on hx.* to xxb@'172.18.214.%';
+
+
+grant select on hx.* to grafana@'localhost';
+grant select on hx.* to grafana@'%';
+
+grant select on hx.* to 'grafana'@'172.18.214.172';
+
+revoke select on hx.* from  grafana@'%';
+revoke select on hx.* from  grafana@'%';
+
+select  host,user  from mysql.user;
+
+delete from  mysql.user where  User='grafanagrafana' and host='%';
+
+
+update mysql.user set host='172.18.214.%'   where user='grafana' 
+
+update mysql.user set host='172.18.121.172'   where user='xxb' 
+
+使用mysqldump在主服务器上锁表备份
+mysql> flush tables with read lock;
+[root@master ~]# mysqldump --all-databases > all.sql
+[root@master ~]# mysql -e 'show master status'
+mysql> unlock tables; //解锁表
+- - - - - - - - - - - - - - - - 
+   一、同步rds数据到slave.
+1. 停掉所有服务。HX1: sh docker_stop_all.sh   HX2: docker stop backendinst3
+2. 登录主库服务器，
+3. 执行锁表：FLUSH TABLES WITH READ LOCK;
+4. 查看主库状态 show master status; 记录下 master_log_file和master_log_pos
+5. 导出mysql数据库; 在slave上执行  mysqldump -h rm-wz946af9t6w5c9f9l.mysql.rds.aliyuncs.com -P 3306 -u root -p --set-gtid-purged=OFF hx>mysql_backend111.sql
+6. 登录从服务器，导入数据；mysql -uroot -p hx < mysql_backend111.sql
+7. 回到主库执行：UNLOCK TABLES;
+8. 进入从服务器
+    1.   stop  slave;
+    2.  reset slave; 
+    3. change master to master_host='rm-wz946af9t6w5c9f9l.mysql.rds.aliyuncs.com', master_user='slave', master_password='slave',master_log_file='mysql-bin.000231', master_log_pos=48279051; 
+    4.  start slave;
+    5.  show slave status\G
+
+
+
+
+
+mysql  生产环境忘记密码
+
+[root@xiaochen ~]# systemctl stop mysqld
+[root@xiaochen ~]# vim /etc/my.cnf
+skip-grant-tables
+[root@xiaochen ~]# systemctl restart mysqld
+[root@xiaochen ~]# mysql
+mysql> update mysql.user set authentication_string='' where user='root' and Host='localhost';
+mysql> flush privileges;
+
+[root@xiaochen 7]# vim /etc/my.cnf
+删掉刚才添加的skip-grant-tables
+[root@xiaochen 7]# systemctl restart mysqld
+
+将mysql的密码重置为空之后，重新修改mysql的密码
+[root@mysql ~]# mysqladmin -uroot -p password "Www1.baidu.com"
+
+
+批量Kill  查询进程
+select concat('kill ', id, ';') from information_schema.processlist where Command != 'Sleep' and Time > 300 order by Time desc;
+
+查询执行的进程按时间排序
+select * from information_schema.processlist where Command != 'Sleep' order by Time desc;
+
+
+
+
+
+
