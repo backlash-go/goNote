@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"unsafe"
+)
 
 /*
 向函数传递参数，传递的是一个副本，要在函数中修改结构体对象的值，需要使用指针
@@ -12,6 +15,19 @@ type stu struct {
 }
 
 func main() {
+	var s4 = struct{}{}
+	fmt.Println(unsafe.Sizeof(s4))
+	a := struct{}{}
+	b := struct{}{}
+
+	fmt.Printf("%p\n", &a)
+	fmt.Printf("%p\n", &b)
+
+	if a == b {
+		fmt.Println("666")
+	}
+
+
 	s1 := stu{"xxb",18}
     //s1.stu1()
 	//fmt.Println(s1)
