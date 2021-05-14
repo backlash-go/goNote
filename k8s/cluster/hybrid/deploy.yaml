@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hybrid-deployment
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: hybrid
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: hybrid
+    spec:
+      containers:
+        - name: hybrid-cloud
+          image: hx-sz-registry-vpc.cn-shenzhen.cr.aliyuncs.com/hxx/hybrid-cloud:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 1111
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 1111
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 1
+            successThreshold: 1
+      imagePullSecrets:
+        - name: hx-sz-registry-secret
+      hostAliases:
+        - ip: 1.2.3.4
+          hostnames:
+            - "host.1235.local"

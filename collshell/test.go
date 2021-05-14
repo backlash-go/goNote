@@ -16,15 +16,13 @@ func main() {
 
 	fmt.Println(reflect.TypeOf(t2))
 
-
 	var w io.Writer = os.Stdout
 	fmt.Println(reflect.TypeOf(w)) // "*os.File"
 
-	var t3 interface{} = []string{"aaa","bbb","ccc"}
+	var t3 interface{} = []string{"aaa", "bbb", "ccc"}
 	fmt.Println(reflect.ValueOf(t3))
 	a := reflect.ValueOf(t3)
 	fmt.Println(a.Index(2))
-
-
+	fmt.Println(-4 / 1)
 
 }

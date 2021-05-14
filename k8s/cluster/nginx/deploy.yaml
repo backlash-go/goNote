@@ -1,0 +1,55 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: nginx
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+        - name: nginx-web
+          image: nginx:1.12.2
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+          readinessProbe:
+            tcpSocket:
+              port: 80
+            initialDelaySeconds: 10
+            timeoutSeconds: 5
+            periodSeconds: 5
+            failureThreshold: 1
+            successThreshold: 1
+          volumeMounts:
+            - name: credential-nginx-base
+              mountPath: "/etc/foo"
+              readOnly: true
+            - name: configmap-nginx
+              mountPath: "/etc/nginx/nginx.conf"
+              subPath: nginx.conf
+      imagePullSecrets:
+        - name: hx-sz-registry-secret
+      hostAliases:
+        - ip: 1.2.3.4
+          hostnames:
+            - "host.1235.local"
+      volumes:
+      - name: credential-nginx-base
+        secret:
+          secretName: mysecret
+          defaultMode: 0444   #0444 八进制 表示 r--r--r--
+      - name: configmap-nginx
+        configMap:
+          name: nginx-configmap
+

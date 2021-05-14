@@ -1,0 +1,76 @@
+//获取 最初的配置 init.default.yaml
+
+kubeadm config print init-defaults > init.default.yaml  #拿到初始化文件
+
+kubeadm init --config init.default.yaml ----control-plane-endpoint slbip
+
+
+//add worker
+  kubeadm join 172.18.214.229:6443 --token abcdef.0123456789abcdef \
+  --discovery-token-ca-cert-hash sha256:05e41daf27c0b42f8bda2219b69396169e158933d708a9e6af57e15ae054bbc1
+
+//add master
+
+  kubeadm join 172.18.214.229:6443 --token abcdef.0123456789abcdef \
+  --discovery-token-ca-cert-hash sha256:05e41daf27c0b42f8bda2219b69396169e158933d708a9e6af57e15ae054bbc1 --experimental-control-plane
+
+
+//add flannel
+
+kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+
+  //修改配置
+
+apiVersion: kubeadm.k8s.io/v1beta2
+bootstrapTokens:
+  - groups:
+      - system:bootstrappers:kubeadm:default-node-token
+    token: abcdef.0123456789abcdef
+    ttl: 24h0m0s
+    usages:
+      - signing
+      - authentication
+kind: InitConfiguration
+localAPIEndpoint:
+  advertiseAddress: 172.18.214.229
+  bindPort: 6443
+nodeRegistration:
+  criSocket: /var/run/dockershim.sock
+  name: master01
+  taints:
+    - effect: NoSchedule
+      key: node-role.kubernetes.io/master
+---
+apiServer:
+  timeoutForControlPlane: 4m0s
+apiVersion: kubeadm.k8s.io/v1beta2
+certificatesDir: /etc/kubernetes/pki
+clusterName: kubernetes
+controllerManager: {}
+dns:
+  type: CoreDNS
+etcd:
+  local:
+    dataDir: /var/lib/etcd
+imageRepository: registry.aliyuncs.com/google_containers
+kind: ClusterConfiguration
+kubernetesVersion: v1.19.0
+networking:
+  dnsDomain: cluster.local
+  serviceSubnet: 10.96.0.0/12
+  podSubnet: 10.244.0.0/16
+scheduler: {}
+
+---
+apiVersion: kubeproxy.config.k8s.io/v1alpha1
+kind: KubeProxyConfiguration
+proxyMode: ipvs
+
+
+
+
+
+ //k8s 命令自动补全
+  yum install -y bash-completion
+  source /usr/share/bash-completion/bash_completion
+  echo "source <(kubectl completion bash)" >> ~/.bashrc

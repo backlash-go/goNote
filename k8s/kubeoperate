@@ -1,0 +1,39 @@
+c2d207f4c3f6        registry.cn-qingdao.aliyuncs.com/kubeoperator/server:v3.0.1-amd64   "ko-server"              16 seconds ago      Up 15 seconds (healthy)   8080/tcp                           kubeoperator_server
+======================= KubeOperator 安装完成 =======================
+
+请开放防火墙或安全组的80,8081-8083端口,通过以下方式访问:
+ URL:  http://$LOCAL_IP:80
+ 用户名:  admin
+ 初始密码:  kubeoperator@admin123
+
+
+ xixianbin
+ xixianbin520
+
+ssh root@172.18.214.228
+ xwWfsa2232fds
+
+
+
+{"auths":{"registry-vpc.cn-shenzhen.aliyuncs.com":{"username":"txb@hexiang","password":"t826927+","auth":"dHhiQGhleGlhbmc6dDgyNjkyNys="}}}
+
+
+kubectl create secret docker-registry hx-sz-registry-secret --docker-server=hx-sz-registry-vpc.cn-shenzhen.cr.aliyuncs.com --docker-username=container-registry@hexiang --docker-password=tLQpNSU12WEFJ
+
+
+ kubectl create secret docker-registry hx-sz-registry-secret \
+   --docker-server=hx-sz-registry-vpc.cn-shenzhen.cr.aliyuncs.com/hxx/hybrid-cloud \
+   --docker-username=xixianbin@hexiang.onaliyun.com \
+   --docker-password=xixianbin520 \
+   --docker-email=xxb466711901@163.com
+
+
+   txb@hexiang
+   docker login --username=txb@hexiang hx-sz-registry.cn-shenzhen.cr.aliyuncs.com
+   docker login --username=container-registry@hexiang hx-sz-registry.cn-shenzhen.cr.aliyuncs.com
+
+
+   docker login --username=xixianbin@hexiang.onaliyun.com hx-sz-registry-vpc.cn-shenzhen.cr.aliyuncs.com
+
+
+ docker login --username=xixianbin@hexiang.onaliyun.com hx-sz-registry-vpc.cn-shenzhen.cr.aliyuncs.com
