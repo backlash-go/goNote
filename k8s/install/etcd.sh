@@ -97,3 +97,9 @@ EOF
 systemctl daemon-reload
 systemctl start etcd
 systemctl enable etcd
+
+
+
+#查看集群状态
+export ETCDCTL_API=3
+/opt/etcd/bin/etcdctl --cacert=/opt/etcd/ssl/ca.pem --cert=/opt/etcd/ssl/server.pem --key=/opt/etcd/ssl/server-key.pem --endpoints="https://172.18.222.42:2379,https://172.18.222.43:2379,https://172.18.222.44:2379" endpoint health --write-out=table

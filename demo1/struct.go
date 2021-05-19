@@ -15,6 +15,7 @@ type stu struct {
 }
 
 func main() {
+
 	var s4 = struct{}{}
 	fmt.Println(unsafe.Sizeof(s4))
 	a := struct{}{}

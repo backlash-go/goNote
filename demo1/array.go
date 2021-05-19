@@ -20,7 +20,7 @@ func main() {
 }
 
 func main0003() {
-	//array define  默认值为数据类型的默认值
+	//array define  默认值数据类型的默认值
 	var a [3]int
 	a[0] = 1
 	fmt.Printf("%d,%T\n", a[2], a) //0,[3]int

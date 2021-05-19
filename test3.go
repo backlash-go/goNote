@@ -60,11 +60,12 @@ func main() {
 
 	ssss1 := Fc
 	ssss2 := Fc
-    fmt.Printf("%p,%p\n",ssss1,ssss1(1))
-    fmt.Printf("%p,%p\n",ssss2,ssss2(2))
-    fmt.Printf("%p,%p\n",Fc,Fc(3))
+	fmt.Printf("%p,%p\n", ssss1, ssss1(1))
+	fmt.Printf("%p,%p\n", ssss2, ssss2(2))
+	fmt.Printf("%p,%p\n", Fc, Fc(3))
 }
 
 func Fc(x int64) int64 {
-	return 2+x
+	return 2 + x
 }
+

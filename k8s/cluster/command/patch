@@ -1,0 +1,4 @@
+# use deployment  name to patch
+kubectl patch deployment hybrid-deployment --patch '{"spec": {"replicas":1,"strategy":{"rollingUpdate":{"maxSurge":2}}}}'
+
+
