@@ -1,0 +1,55 @@
+# oss 只写
+{
+    "Version": "1",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                "oss:DeleteObject",
+                "oss:ListParts",
+                "oss:AbortMultipartUpload",
+                "oss:PutObject"
+            ],
+            "Resource": [
+                "acs:oss:*:*:hexiaoxiang-xcx-2/audio",
+                "acs:oss:*:*:hexiaoxiang-xcx-2/audio/*"
+            ]
+        }
+    ]
+}
+
+# k8s 开发人员权限
+
+{
+    "Statement": [
+        {
+            "Action": [
+                "cs:GetClusters",
+                "cs:GetClusterById",
+                "cs:GetClusterLogs",
+                "cs:GetClusterEndpoint",
+                "cs:GetClusterProjects",
+                "cs:GetTriggerHook"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "acs:cs:*:*:cluster/ca346a63c36a54361940afdc1df9e36a5"
+            ]
+        },
+        {
+            "Action": [
+                "cs:GetClusters",
+                "cs:GetClusterById",
+                "cs:GetClusterLogs",
+                "cs:GetClusterEndpoint",
+                "cs:GetClusterProjects",
+                "cs:GetTriggerHook"
+            ],
+            "Effect": "Allow",
+            "Resource": [
+                "acs:cs:*:*:cluster/c520d6255f9754aed80f9025dfcf599f3"
+            ]
+        }
+    ],
+    "Version": "1"
+}

@@ -1,1 +1,28 @@
 abcd
+
+
+global:
+  #每一分钟检查一次是否恢复
+  resolve_timeout: 1m
+route:
+  #设置默认接收人
+  receiver: 'webhook'
+  #组告警等待时间。也就是告警产生后等待10s，如果有同组告警一起发出
+  group_wait: 10s
+  #两组告警的间隔时间
+  group_interval: 10s
+  #重复告警的间隔时间，减少相同微信告警的发送频率
+  repeat_interval: 1h
+  #采用哪个标签来作为分组依据
+  group_by: [alertname]
+  routes:
+  - receiver: webhook
+    group_wait: 10s
+    match:
+      team: node
+receivers:
+- name: 'webhook'
+  webhook_configs:
+  - url: http://localhost:8060/dingtalk/ops_dingding/send
+    #警报被解决之后是否通知
+send_resolved: true
