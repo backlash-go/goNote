@@ -1,0 +1,31 @@
+FROM maven:3.5.0 AS builder
+# add pom.xml and source code
+ADD ./pom.xml /pom.xml
+ADD ./settings.xml /settings.xml
+WORKDIR /ucrm-app
+ADD ./ /ucrm-app
+#WORKDIR /
+
+# package jar
+RUN cd /ucrm-app && mvn clean package -Dmaven.test.skip=true --settings ./settings.xml
+
+
+#使用自己构建的基础镜像服务--启动服务
+FROM registry.cn-shenzhen.aliyuncs.com/hexiang/java8-server:latest
+MAINTAINER "niejiayi@hexiaoxiang.com"
+COPY --from=builder /ucrm-app/*.jar /ucrm-app.jar
+EXPOSE 7000
+EXPOSE 7001
+EXPOSE 7002
+ENV SPRING_PROFILES_ACTIVE ="test"
+ENV JVM_PARAMS="-Xmx2668m -Xms2668m -Xmn960m -Xss1m -XX:MetaspaceSize=256M -XX:MaxMetaspaceSize=512M \
+                -XX:ParallelGCThreads=8 \
+                -XX:+UseParNewGC -XX:+UseConcMarkSweepGC \
+                -XX:+PrintGCDetails -Xloggc:/tmp/gc.log \
+                -XX:+HeapDumpOnOutOfMemoryError -XX:HeapDumpPath=/logs/java.hprof"
+ENV SPRING_PARAMS="-Dspring.config.additional-location=/config/application.properties"
+ENTRYPOINT [ "sh", "-c", "java \
+$JVM_PARAMS $SPRING_PARAMS \
+-Dspring.profiles.active=$SPRING_PROFILES_ACTIVE \
+-Djava.security.egd=file:/dev/./urandom \
+-jar /ucrm-app.jar" ]

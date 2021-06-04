@@ -1,0 +1,29 @@
+FROM registry.cn-shenzhen.aliyuncs.com/hexiang/java8-maven:latest AS builder
+# add pom.xml and source code
+ADD ./pom.xml /pom.xml
+WORKDIR /scrm-wehub-report-app
+ADD ./ /scrm-wehub-report-app
+#WORKDIR /
+# package jar
+#RUN mvn clean package -Dmaven.test.skip=true
+RUN cd /scrm-wehub-report-app && mvn clean package -Dmaven.test.skip=true --settings ./settings.xml
+
+FROM  williamyeh/java8:latest
+RUN ln -sf /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && echo 'Asia/Shanghai' >/etc/timezone
+#RUN apt-get update && apt-get install -y openssh-server net-tools
+MAINTAINER "niejiayi@hexiaoxiang.com"
+COPY --from=builder /scrm-wehub-report-app/*.jar /scrm-wehub-report-app.jar
+COPY --from=hengyunabc/arthas:latest /opt/arthas /opt/arthas
+
+EXPOSE 7001
+RUN mkdir -p /config/
+ENV LANG C.UTF-8
+ENV JVM_PARAMS="-Xms3g -Xmx3g -Xmn1500m -XX:SurvivorRatio=10 -Xss1M -XX:MaxMetaspaceSize=512M -XX:MetaspaceSize=256M \
+                -XX:MaxDirectMemorySize=256M -XX:CMSInitiatingOccupancyFraction=70 \
+                -XX:+UseConcMarkSweepGC "
+
+#配置获取， 经验证 本地环境 假设 active为 test 取值优先级是 1.application-test.properties > 2. application.properties > 3.外部文件：/config/application.properties
+ENV SPRING_PARAMS="-Dspring.config.additional-location=/config/application.properties"
+ENTRYPOINT [ "sh", "-c", "java $JVM_PARAMS \
+$SPRING_PARAMS \
+-Djava.security.egd=file:/dev/./urandom -jar /scrm-wehub-report-app.jar" ]
