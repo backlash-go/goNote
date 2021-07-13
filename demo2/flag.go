@@ -37,8 +37,7 @@ func main() {
 		defaultGopher = "pocket"
 		usage         = "the variety of gopher"
 	)
-	flag.StringVar(&gopherType, "gopher_type", defaultGopher, usage)
-	flag.StringVar(&gopherType, "g", defaultGopher, usage+" (shorthand)")
+	flag.StringVar(&gopherType, "g", defaultGopher, usage)
 	flag.Parse()
 
 //go run flag.go -g aaa

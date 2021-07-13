@@ -7,7 +7,7 @@ const (
 )
 
 func main() {
-	number := []int{6, 5, 2, 3, 4, 1}
+	number := []int{5, 6, 2, 3, 4, 1}
 	bubbleSort(number)
 
 }
