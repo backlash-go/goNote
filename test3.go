@@ -2,6 +2,9 @@ package main
 
 import "fmt"
 
+
+
+
 type Pet interface {
 	show()
 }

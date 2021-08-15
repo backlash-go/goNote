@@ -54,6 +54,7 @@ func main() {
 	}
 
 	log.Println("sadsad %d",a)
+    fmt.Println(Xxb)
 
 }
 type as struct {

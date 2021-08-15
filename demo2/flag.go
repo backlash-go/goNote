@@ -46,4 +46,7 @@ func main() {
 //go run flag.go -gopher_type
 	fmt.Println(gopherType)
 
+	st1 := "我哎你"
+	fmt.Println(st1[0:2])
+
 }
