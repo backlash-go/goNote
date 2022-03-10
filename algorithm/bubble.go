@@ -7,12 +7,12 @@ const (
 )
 
 func main() {
-	number := []int{5, 6, 2, 3, 4, 1}
+	number := []int64{5, 6, 2, 3, 4, 1}
 	bubbleSort(number)
 
 }
 
-func bubbleSort(nums []int) {
+func bubbleSort(nums []int64) {
 	flags1 := false
 	for i := 0; i < len(nums); i++ {
 

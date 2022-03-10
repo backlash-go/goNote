@@ -28,12 +28,23 @@ func main() {
 	str1 := "你好"
 	b1 := []byte(str1)
 
-	fmt.Println("%c", b1)
+	fmt.Println( b1)
 
 	fmt.Println(len(str1))
 
 	str2 := "老铁"
 	str3 := str1 + str2
 	fmt.Println(str3)  //你好老铁
+
+	str4 :=  "s"
+	fmt.Println(len(str4))
+
+	var ch1 byte = 'A'
+	//ch1 := 100
+
+	//var ch2  = 200
+	fmt.Printf("%v\n", ch1)
+	fmt.Printf("%T\n",ch1)
+	//fmt.Println(ch1 + ch2)
 
 }
