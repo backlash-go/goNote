@@ -11,6 +11,7 @@ func main() {
 	//go f2()
 	//a := 10
 
+
 	ss1 := make([]int, 3, 5)
 	fmt.Printf("%v,%p,%p\n", ss1, ss1, &ss1)
 	ss1 = append(ss1, 1)

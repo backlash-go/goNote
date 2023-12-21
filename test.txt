@@ -24,3 +24,15 @@ GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO 'bigdata_sync'@'%'
 GRANT SELECT, REPLICATION SLAVE, REPLICATION CLIENT ON *.* TO hug@'%';
 create user xxb02@'172.18.214.%' identified by 'BE!c27~cMVM8';
 grant select on hx.* to xxb02@'%';
+
+
+  Hi,everybody, my name is XiXianBin,I'm from fujian province of China  and graduated from
+HUNAN Institute of science technology in 2018 years.
+Now I work for hangzhou Hexiangwangluo network technology corporation as an Operations engineer which
+is mainly responsible for the management or using of  production ,cost,account and others on the alicloud.
+My skills  include the following,
+Firstly,  using  a number of  program languages which including go javascript etc
+secondly, making use full of tools including nginx ,jenkins etc to develop CI/CD product
+Thirdly,  It's Experienced for me to use Kubernetes to manage the scalability and stability of appllication
+
+

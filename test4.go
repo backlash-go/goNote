@@ -1,10 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"strings"
+)
 
 func main() {
 sl1 :=[]string{"a","b","c"}
 f(sl1...)
+
+s2 := "asdsad"
+
+fmt.Println(strings.Split(s2,s2))
+
+fmt.Println(append([]string{}, "22222"))
+fmt.Println(append([]string{}, "3333"))
+
+
 	
 }
 
