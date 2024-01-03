@@ -7,7 +7,7 @@ sleep 2
 #touch  /etc/docker/daemon.json
 cat << EOF > /etc/docker/daemon.json
 {
-  "registry-mirrors": ["https://iuwddt6t.mirror.aliyuncs.com"]
+  "registry-mirrors": ["https://szko6ggt.mirror.aliyuncs.com"]
 }
 EOF
 systemctl daemon-reload
