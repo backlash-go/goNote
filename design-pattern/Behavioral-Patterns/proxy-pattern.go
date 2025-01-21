@@ -36,3 +36,5 @@ func (proxy StationProxy) sell(name string) {
 	}
 
 }
+
+

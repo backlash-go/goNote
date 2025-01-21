@@ -18,5 +18,6 @@ func main() {
 	}
 
 	fmt.Println(viper.GetStringMapString("database")["host"])
+	fmt.Println(viper.ConfigFileUsed())
 
 }

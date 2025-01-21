@@ -14,5 +14,4 @@ func TestTemplate(t *testing.T) {
 	// 做炒鸡蛋
 	chaojidan := &ChaoJiDan{}
 	doCook(chaojidan)
-
 }

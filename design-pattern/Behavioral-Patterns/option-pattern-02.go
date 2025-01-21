@@ -31,6 +31,8 @@ func (f optionFunc) apply(o *options) {
 	f(o)
 }
 
+
+
 func WithTimeout(t time.Duration) Option {
 	return optionFunc(func(o *options) {
 		o.timeout = t
@@ -60,3 +62,5 @@ func NewConnect(addr string, opts ...Option) (*Connection, error) {
 		timeout: options.timeout,
 	}, nil
 }
+
+

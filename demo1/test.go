@@ -2,7 +2,6 @@ package main
 
 import (
 	"fmt"
-	"strings"
 )
 
 type Test struct {
@@ -13,6 +12,7 @@ type Test struct {
 func main() {
 
 	//  t1 := Test{
+
 	// 	name: []string{"aa","bb"},
 	// 	age: 20000,
 	// }
@@ -41,26 +41,40 @@ func main() {
 	//
 	//}
 
+	//var sl1 = []string{"admin","devops"}
 
-   //var sl1 = []string{"admin","devops"}
+	//sl2 := make([]string,0,0)
+	//
+	//str1 := strings.Join(sl2,",")
+	//fmt.Println(str1)
+	//
+	//if str1 == "" {
+	//	fmt.Println("aaa")
+	//
+	//}
+	//
+	//
+	//fmt.Println(strings.Split(str1,",")[0])
 
-   sl2 := make([]string,0,0)
-
-   str1 := strings.Join(sl2,",")
-   fmt.Println(str1)
-
-	if str1 == "" {
-		fmt.Println("aaa")
-
-	}
+	var a int64 = 10
+	fmt.Printf("%T\n", string(a))
+	fmt.Printf("%+v\n", a)
 
 
-	fmt.Println(strings.Split(str1,",")[0])
 
+	var strPtr *string
+	str := "initial value"          // 创建一个字符串变量
+
+	strPtr = &str
+
+	fmt.Println("Before:", *strPtr) // 输出: initial value
+
+
+	*strPtr = "age"                 // 通过解引用修改字符串值
+	fmt.Println("After:", *strPtr)  // 输出: age
+	fmt.Println("Original string:", str) // 输出: age
 
 }
-
-
 
 func f1() {
 	defer fmt.Println("222")

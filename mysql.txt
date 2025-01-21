@@ -18,7 +18,7 @@ BE!c27~cMVM7
    create database db;
    use db;
    show tables;
-    create user Jump@'%' identified by 'BEMVM8';
+   create user Jump@'%' identified by 'BEMVM8';
 create user grafana@'localhost' identified by 'BE!c27~cMVM8';
 
 create user xxb@'172.18.214.%' identified by 'BE!c27~cMVM8';

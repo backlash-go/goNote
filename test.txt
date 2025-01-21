@@ -36,3 +36,12 @@ secondly, making use full of tools including nginx ,jenkins etc to develop CI/CD
 Thirdly,  It's Experienced for me to use Kubernetes to manage the scalability and stability of appllication
 
 
+
+转账场景说明： （按贵司经营情况填写）
+本公司经营茶叶以及茶具品类，商城目前做的是一级分销模式，例如：岩茶 牛栏坑-肉桂-NR-117商品，售价是398元，分享朋友下单后销售员可获得10%的奖励。会员介绍客户进入商城购物消费，待交易完成后，会员可以获得相应的直推佣金，并进行提现操作，特申请开通商家转账到零钱功能，我司可以线上发放佣金奖励到微信钱包。
+商城链接：http://8016649.apwfx.qbyun.com/mb/shop/index?sid=8016649
+分销商账号：19942731317：fenxha9b1Hjk
+小程序名称：夷俊生茶业
+小程序APPID：wx23d267bc7087f44f
+公众号名称： 夷俊生茶业
+公众号APPID： gh_050ab7f48cee

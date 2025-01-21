@@ -1,0 +1,7 @@
+型号：ecs.c6.2xlarge
+CPU： 8核(vCPU)
+内存：16 GiB
+硬盘： 300GiB
+操作系统：Alibaba Cloud Linux 3.2104 LTS 64位 等保2.0三级版
+数据库：mysql5.7
+中间件：（JDK:jdk1.8.0_391、Nginx:1.22.1、Redis:4.0）
